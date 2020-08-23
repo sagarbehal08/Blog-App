@@ -1,5 +1,6 @@
 import React , {useReducer} from 'react';
 import createDataContext from './createDataContext';
+import { call } from 'react-native-reanimated';
 
 const BlogContext=React.createContext();
 const blogReducer=(state,action)=>{
@@ -29,7 +30,8 @@ const addBlogPost=(dispatch)=>{
         // setBlogPost([...blogPost,  {title: `Title Blog #${blogPost.length+1}`}])
         return (title,content,callback)=>{
             dispatch({type:'add_blogPost',payload:{title,content}})
-            callback();
+            if(callback)
+            {callback();}
             };
         }
 
@@ -41,8 +43,11 @@ const deleteBlogPost=(dispatch)=>{
             }
 
 const editBlogPost=(dispatch)=>{
-    return (id,title,content)=>{
+    return (id,title,content,callback)=>{
         dispatch({type:'edit_blogPost',payload:{id,title,content}});
+        if(callback){
+            callback();
+        }
     }
 }
 export const {Context,Provider}=createDataContext(blogReducer,{addBlogPost,deleteBlogPost,editBlogPost},[]);

@@ -11,7 +11,7 @@ const BlogPostForm=({onSubmit,initialValues})=>{
         <Text style={styles.label}>Enter Content:</Text>
         <TextInput style={styles.input} value={content} onChangeText={(text)=>setContent(text)}/>
         <Button 
-        title="Add Blog Post"
+        title="Save Blog Post"
         onPress={()=>{
             onSubmit(title,content)
         }}
