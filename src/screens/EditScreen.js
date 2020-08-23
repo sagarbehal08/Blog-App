@@ -1,9 +1,9 @@
 import React , {useContext} from 'react';
 import {Text,View,StyleSheet,TouchableOpacity} from 'react-native';
-const EditScreen=()=>{
+const EditScreen=({navigation})=>{
     return (
         <View>
-            <Text>Edit Screen</Text>
+            <Text>Edit Screen__{navigation.getParam('id')}</Text>
         </View>
     );
 }
