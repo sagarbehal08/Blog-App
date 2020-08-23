@@ -10,7 +10,8 @@ const blogReducer=(state,action)=>{
                 return [...state,
                     {
                         id:Math.floor(Math.random()*99999),
-                        title:`Title Blog #${state.length+1}`
+                        title:action.payload.title,
+                        content:action.payload.content
                     }
                 ];
         default:
@@ -20,8 +21,8 @@ const blogReducer=(state,action)=>{
 
 const addBlogPost=(dispatch)=>{
         // setBlogPost([...blogPost,  {title: `Title Blog #${blogPost.length+1}`}])
-        return ()=>{
-            dispatch({type:'add_blogPost'})
+        return (title,content)=>{
+            dispatch({type:'add_blogPost',payload:{title,content}})
             };
         }
 
