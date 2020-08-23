@@ -21,8 +21,9 @@ const blogReducer=(state,action)=>{
 
 const addBlogPost=(dispatch)=>{
         // setBlogPost([...blogPost,  {title: `Title Blog #${blogPost.length+1}`}])
-        return (title,content)=>{
+        return (title,content,callback)=>{
             dispatch({type:'add_blogPost',payload:{title,content}})
+            callback();
             };
         }
 
