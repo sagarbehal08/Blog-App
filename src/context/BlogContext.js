@@ -29,13 +29,14 @@ const getBlogPost=(dispatch)=>{
     return async () =>{
         const response = await jsonServer.get("/blogposts");
 
-        dispatch({type:'get_blogPost',payload:response});
+        dispatch({type:'get_blogPost',payload:response.data});
     }
 }
 const addBlogPost=(dispatch)=>{
         // setBlogPost([...blogPost,  {title: `Title Blog #${blogPost.length+1}`}])
-        return (title,content,callback)=>{
-            dispatch({type:'add_blogPost',payload:{title,content}})
+        return async (title,content,callback)=>{
+            await jsonServer.post("/blogposts",{title,content});
+            // dispatch({type:'add_blogPost',payload:{title,content}})
             if(callback)
             {callback();}
             };
